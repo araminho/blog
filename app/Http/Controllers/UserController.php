@@ -12,7 +12,7 @@ class UserController extends Controller
     {
         DB::table('users')->where('role', 'admin')->dd();
 
-        echo 111;
+        echo 222;
         
     }
 
