@@ -8,9 +8,7 @@ class IndexController extends Controller
 {
     public function index()
     {
-        //return redirect()->route('posts_and_comments', [50, 500]);
-        return redirect('/posts/40/comments/400');
-        //return view('welcome');
+        return view('welcome');
     }
 
     public function post($postId, $commentId = null) {

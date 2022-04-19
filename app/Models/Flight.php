@@ -9,4 +9,8 @@ class Flight extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name', 'number', 'price', 'active'
+    ];
+
 }

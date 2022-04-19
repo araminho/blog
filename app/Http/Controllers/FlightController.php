@@ -9,18 +9,12 @@ class FlightController extends Controller
 {
     public function index()
     {
-        $flights = Flight::where('active', 1)
-            ->orderBy('name', 'desc')
-            ->take(2)
-            ->get();
-
-
-        foreach ($flights as $flight) {
+        $flights = Flight::all();
+    
+        dd($flights[0]);
+        /*foreach($flights as $flight) {
             echo $flight->name . "<br>";
-        }
+        }*/
 
-        
-        $flight = Flight::first();
-        dd($flight);
     }
 }
