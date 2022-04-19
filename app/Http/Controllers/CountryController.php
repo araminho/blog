@@ -12,7 +12,7 @@ class CountryController extends Controller
         $countries = DB::table('countries')
             ->whereIn('region_name', ['Europe', 'Asia'])
             ->get();
-        dd($countries);
+        dd($countries->toArray());
 
 
        // return view('countries', ['countries' => $countries]);

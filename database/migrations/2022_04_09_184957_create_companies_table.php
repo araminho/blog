@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('companies', function (Blueprint $table) {
+        /*Schema::create('companies', function (Blueprint $table) {
             $table->id();
             $table->string('title', 100);
             $table->timestamps();
@@ -21,7 +21,7 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->unsignedBigInteger('company_id')->nullable();
             $table->foreignId('company_id')->constrained();
-        });
+        });*/
     
     }
 

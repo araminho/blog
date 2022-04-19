@@ -5,7 +5,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\CountryController;
-
+use App\Http\Controllers\FlightController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,3 +60,5 @@ Route::resource('photos', PhotoController::class);
 
     
 Route::get('/countries', [CountryController::class, 'index']);
+
+Route::get('/flights', [FlightController::class, 'index']);
