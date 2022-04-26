@@ -7,6 +7,14 @@ use Illuminate\Support\Facades\DB;
 
 class CountryController extends Controller
 {
+    public function __construct()
+    {
+       // $this->middleware('age');
+       $this->middleware('age')->only(['index', 'show']);
+       // $this->middleware('age')->except('show');
+    }
+
+
     public function index()
     {
         $countries = DB::table('countries')
@@ -15,6 +23,12 @@ class CountryController extends Controller
         dd($countries->toArray());
 
 
-       // return view('countries', ['countries' => $countries]);
+       return view('countries', ['countries' => $countries]);
+    }
+
+    public function show($id)
+    {
+        $country = DB::table('countries')->find($id);
+        dd($country);
     }
 }

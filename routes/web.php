@@ -7,6 +7,11 @@ use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\FlightController;
 use App\Http\Controllers\CollectionController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\TestController;
+use App\Http\Controllers\ABCController;
+use App\Http\Controllers\SessionController;
+use App\Http\Controllers\CacheController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,13 +26,13 @@ use App\Http\Controllers\CollectionController;
 
 Route::get('/', [IndexController::class, 'index'])->name('home');
 
-Route::get('/test', function () {
+/*Route::get('/test', function () {
     return view('test', [
         'name' => '<b>Aram</b>',
         'records' => [1, 2, 3],
         'i' => 'sssss'
     ]);
-});
+});*/
 
 Route::get('blade', function () {
     return view('child');
@@ -61,8 +66,9 @@ Route::resource('photos', PhotoController::class);
 
     
 Route::get('/countries', [CountryController::class, 'index']);
+Route::get('/countries/{id}', [CountryController::class, 'show']);
 
-Route::get('/flights', [FlightController::class, 'index']);
+Route::get('/flights/{id}', [FlightController::class, 'index']);
 
 Route::get(
     'collect1',
@@ -97,3 +103,39 @@ Route::get(
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('add-blog-post-form', function(){
+    return view('add-blog-post-form');
+});
+Route::post('store-form', [PostController::class, 'store']);
+
+Route::get('/array_route', function () {
+    return [1, 2, 3];
+});
+
+Route::get('/header',function() {
+    return response("Hello", 200)
+    ->header('Content-Type', 'text/html');
+})->middleware('age');
+
+Route::get('json',function() {
+    //return redirect()->away('https://www.google.com');    ;
+    return response()->json([
+        'name' => 'Barack Obama',
+        'state' => 'Illinois'
+    ]);
+});
+
+    
+Route::get('/test', [TestController::class,'index'])
+    ->middleware(['age', 'role:admin']);
+
+Route::get('/terminate', [ABCController::class, 'index']);
+
+Route::get('session/get', [SessionController::class, 'accessSessionData']);
+Route::get('session/set', [SessionController::class, 'storeSessionData']);
+Route::get('session/remove', [SessionController::class, 'deleteSessionData']);
+    
+
+Route::get('cache/put', [CacheController::class, 'put']);
+Route::get('cache/get', [CacheController::class, 'get']);
