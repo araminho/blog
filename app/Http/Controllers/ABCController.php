@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ABCController extends Controller
 {
     public function index() {
-        abort(404);
-        //echo "<br>ABC Controller.";
+        $countries = DB::table('countries')->paginate(15);
+        return view(
+            'countries.index',
+            ['countries' => $countries]
+        );
+
     }
 
 }

@@ -12,6 +12,9 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\ABCController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\CacheController;
+use App\Http\Controllers\IdentitycardController;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,14 +40,14 @@ Route::get('/', [IndexController::class, 'index'])->name('home');
 Route::get('blade', function () {
     return view('child');
 });
-    
+
 
 Route::get(
-    'posts/{post}/comments/{comment?}', 
+    'posts/{post}/comments/{comment?}',
     [IndexController::class, 'post']
 )-> name('posts_and_comments');;
-    
-    
+
+
 
 Route::prefix('admin')->group(function () {
     Route::get('/users', function () {
@@ -64,7 +67,7 @@ Route::get('/user/{id}', [
 
 Route::resource('photos', PhotoController::class);
 
-    
+
 Route::get('/countries', [CountryController::class, 'index']);
 Route::get('/countries/{id}', [CountryController::class, 'show']);
 
@@ -94,7 +97,7 @@ Route::get(
     'sort_collection',
     [CollectionController::class, 'sort_data']
 );
-    
+
 Route::get(
     'key_collection',
     [CollectionController::class, 'read_keys']
@@ -126,16 +129,21 @@ Route::get('json',function() {
     ]);
 });
 
-    
+
 Route::get('/test', [TestController::class,'index'])
     ->middleware(['age', 'role:admin']);
 
-Route::get('/terminate', [ABCController::class, 'index']);
+Route::get('/abc', [ABCController::class, 'index']);
 
 Route::get('session/get', [SessionController::class, 'accessSessionData']);
 Route::get('session/set', [SessionController::class, 'storeSessionData']);
 Route::get('session/remove', [SessionController::class, 'deleteSessionData']);
-    
+
 
 Route::get('cache/put', [CacheController::class, 'put']);
 Route::get('cache/get', [CacheController::class, 'get']);
+
+Route::get('/identity', [IdentitycardController::class,'index']);
+
+Route::get('/brand',[BrandController::class,'index']);
+Route::get('/product',[ProductController::class,'index']);
