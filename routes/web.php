@@ -28,6 +28,10 @@ Route::get('blade', function () {
     return view('child');
 });
 
+Route::get('branch1', function () {
+    return view('branch1');
+});
+
 Route::get('branch2', function () {
     return view('branch2');
 });
