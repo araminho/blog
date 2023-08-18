@@ -27,3 +27,7 @@ Route::get('/', function () {
 Route::get('blade', function () {
     return view('child');
 });
+
+Route::get('branch1', function () {
+    return view('branch1');
+});
