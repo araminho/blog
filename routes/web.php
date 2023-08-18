@@ -35,3 +35,4 @@ Route::get('branch1', function () {
 Route::get('branch2', function () {
     return view('branch2');
 });
+
